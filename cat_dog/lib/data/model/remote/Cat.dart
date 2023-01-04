@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class CatResponse {
   String? id;
   String? imgUrl;
@@ -21,5 +23,13 @@ class CatResponse {
     map['width'] = width;
     map['height'] = height;
     return map;
+  }
+}
+
+List<CatResponse> jsonToCatResponseList(String jsonData) {
+  try {
+    return json.decode(jsonData).map((data) => CatResponse.fromJson(data));
+  } catch (e) {
+    return <CatResponse>[];
   }
 }
