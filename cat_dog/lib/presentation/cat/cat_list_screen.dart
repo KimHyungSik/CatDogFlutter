@@ -8,16 +8,27 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../../data/repository/cat_repository_imp.dart';
 
-class CatListScreen extends StatelessWidget {
-  CatListScreen({super.key}) {
-    loadData();
-  }
+class CatListScreen extends StatefulWidget {
+  @override
+  State<CatListScreen> createState() => _CatListScreenState();
+}
 
+class _CatListScreenState extends State<CatListScreen> {
   CatRepository repository = CatRepositoryImp(CatService());
+
   List<CatImage> catList = <CatImage>[];
 
   Future loadData() async {
-    catList = await repository.getCatList();
+    final newCatList = await repository.getCatList();
+    setState(() {
+      catList = newCatList;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
   }
 
   @override
