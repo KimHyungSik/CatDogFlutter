@@ -5,7 +5,8 @@ import 'package:http/http.dart' as http;
 
 class CatService {
   Future<List<CatResponse>> getCatList() async {
-    final url = Uri.https("api.thecatapi.com", "/v1/images/search?limit=10");
+    final url =
+        Uri.https("api.thecatapi.com", "/v1/images/search", {"limit": "10"});
     final response = await http.get(url);
     if (response.statusCode == 200) {
       return jsonToCatResponseList(response.body);
