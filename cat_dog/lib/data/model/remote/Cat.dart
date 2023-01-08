@@ -28,8 +28,12 @@ class CatResponse {
 
 List<CatResponse> jsonToCatResponseList(String jsonData) {
   try {
-    return json.decode(jsonData).map((data) => CatResponse.fromJson(data));
+    final jsonMap = jsonDecode(jsonData);
+    final catResponseList =
+        (jsonMap as List).map((data) => CatResponse.fromJson(data)).toList();
+    return catResponseList;
   } catch (e) {
+    print(e.toString());
     return <CatResponse>[];
   }
 }
