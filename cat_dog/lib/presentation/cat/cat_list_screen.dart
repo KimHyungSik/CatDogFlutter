@@ -5,40 +5,24 @@ import 'package:cat_dog/domain/repository/cat_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
 import '../../data/repository/cat_repository_imp.dart';
+import 'cat_provider.dart';
 
-class CatListScreen extends StatefulWidget {
-  @override
-  State<CatListScreen> createState() => _CatListScreenState();
-}
-
-class _CatListScreenState extends State<CatListScreen> {
-  CatRepository repository = CatRepositoryImp(CatService());
-
-  List<CatImage> catList = <CatImage>[];
-
-  Future loadData() async {
-    final newCatList = await repository.getCatList();
-    setState(() {
-      catList = newCatList;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
+class CatListScreen extends StatelessWidget {
+  late CatProvider _catProvider;
 
   @override
   Widget build(BuildContext context) {
+    _catProvider = Provider.of<CatProvider>(context);
+
     return Scaffold(
       body: ListView.builder(
-        itemCount: catList.length,
+        itemCount: _catProvider.catList.length,
         itemBuilder: (context, index) {
-          if (catList[index].imageUrl != null) {
-            return Image.network(catList[index].imageUrl!);
+          if (_catProvider.catList[index].imageUrl != null) {
+            return Image.network(_catProvider.catList[index].imageUrl!);
           } else {
             return Container();
           }
