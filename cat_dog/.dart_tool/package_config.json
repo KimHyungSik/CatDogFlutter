@@ -68,6 +68,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "get_it",
+      "rootUri": "file:///Users/gimhyeongsig/Desktop/Tool/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/gimhyeongsig/Desktop/Tool/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5",
       "packageUri": "lib/",
@@ -182,7 +188,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-10T13:31:56.971592Z",
+  "generated": "2023-01-16T13:48:41.256824Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }
